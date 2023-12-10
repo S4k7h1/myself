@@ -29,19 +29,17 @@
                     <a class="nav-link" href="index.html">Home</a>
                   </li>
                   <li class="nav-item mx-2 fs-5 ">
-                    <a class="nav-link" href="#aboutsection">About </a>
+                    <a class="nav-link" href="index.html#aboutsection">About </a>
                   </li>
                   <li class="nav-item mx-2 fs-5 ">
-                    <a class="nav-link" href="#companys">companys </a>
+                    <a class="nav-link" href="index.html#companys">companys </a>
                   </li>
                   <li class="nav-item mx-2 fs-5 ">
-                    <a class="nav-link" href="#contact">Job Apply</a>
+                    <a class="nav-link" href="index.html#contact">Job Apply</a>
                   </li>
+                  
                   <li class="nav-item mx-2 fs-5 ">
-                    <a class="nav-link" href="login.html">Agent Login</a>
-                  </li>
-                  <li class="nav-item mx-2 fs-5 ">
-                    <a class="nav-link" href="#footer">Contact us</a>
+                    <a class="nav-link" href="index.html#footer">Contact us</a>
                   </li>
               </ul>
             </div>
@@ -53,27 +51,27 @@
 
         <div class=" row main_child">
             <div class=""></div>
-            <form class="row g-3 needs-validation" novalidate>
+            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" class="row g-3 needs-validation" novalidate>
                 <div class =" col-md-12 title"> <h1 class="text-center text-success">Register</h1></div>
                 <div class="col-md-4">
                   <label for="validationCustom01" class="form-label">First name</label>
-                  <input type="text" class="form-control" id="validationCustom01"  required>
+                  <input type="text" class="form-control" name="ufname" id="validationCustom01"  required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
                 </div>
                 <div class="col-md-4">
                   <label for="validationCustom02" class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="validationCustom02"  required>
+                  <input type="text" class="form-control" name='ulname' id="validationCustom02"  required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
                 </div>
                 <div class="col-md-4">
-                  <label for="validationCustomUsername" class="form-label">Username</label>
+                  <label for="validationCustomUsername" class="form-label">Email</label>
                   <div class="input-group has-validation">
                     <span class="input-group-text" id="inputGroupPrepend">@</span>
-                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                    <input type="email" class="form-control" name='uname' id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                     <div class="invalid-feedback">
                       Please choose a username.
                     </div>
@@ -81,53 +79,52 @@
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom03" class="form-label">Password</label>
-                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <input type="password" class="form-control" name='upassword' id="validationCustom03" required>
                     <div class="invalid-feedback">
                       Please provide a valid city.
                     </div>
                   </div>
                   <div class="col-md-4">
                     <label for="validationCustom03" class="form-label">Conform Password</label>
-                    <input type="text" class="form-control" id="validationCustom03" required>
+                    <input type="password" class="form-control" name='ucpassword' id="validationCustom03" required>
                     <div class="invalid-feedback">
                       Please provide a valid city.
                     </div>
                   </div>
                 <div class="col-md-4">
                   <label for="validationCustom03" class="form-label">City</label>
-                  <input type="text" class="form-control" id="validationCustom03" required>
+                  <input type="text" class="form-control" name='ucity' id="validationCustom03" required>
                   <div class="invalid-feedback">
                     Please provide a valid city.
                   </div>
                 </div>
                 <div class="col-md-4">
                   <label for="validationCustom04" class="form-label">State</label>
-                  <input class="form-control " required>
+                  <input class="form-control " name='ustate' required>
                   <div class="invalid-feedback">
                     Please select a valid state.
                   </div>
                 </div>
                 <div class="col-md-4">
                     <label for="validationCustom04" class="form-label">Shop Name</label>
-                    <input class="form-control " required>
+                    <input class="form-control " name='usname' required>
                     <div class="invalid-feedback">
                       Please select a valid state.
                     </div>
                   </div>
                   <div class="col-md-4">
                     <label for="validationCustom04" class="form-label">Phone Number</label>
-                    <input class="form-control " required>
+                    <input class="form-control " name='uphone' required>
                     <div class="invalid-feedback">
                       Please select a valid state.
                     </div>
                   </div>
                 
-                <div class="col-md-12 text-center">
-                    <span>I Already Have Account <a href="login.html" class="">Login</a></span>
-                </div>
-                
                 <div class="col-12 pt-4 text-center">
-                  <button class="btn btn-primary" type="submit">Register</button>
+                  <button class="btn btn-primary" name="submit" type="submit">Register</button>
+                </div>
+                <div class="col-md-12 text-center">
+                    <span>I Already Have Account <a href="login.php" class="">Login</a></span>
                 </div>
               </form>
         </div>
@@ -142,3 +139,47 @@
 <script src="js/custom.js"></script>
 </body>
 </html>
+
+<?php
+  include 'link.php';
+
+  if(isset($_POST['submit'])){
+
+    $ufname=$_POST['ufname'];
+    $ulname=$_POST['ulname'];
+    $uname=$_POST['uname'];
+    $upass=$_POST['upassword'];
+    $hashpassw=password_hash($upass,PASSWORD_DEFAULT);
+    $ucpass=$_POST['ucpassword'];
+    $ucity=$_POST['ucity'];
+    $ustate=$_POST['ustate'];
+    $usname=$_POST['usname'];
+    $uphone=$_POST['uphone'];
+    $role="agent";
+
+    if($upass == $ucpass){
+      $commad="INSERT INTO userinfotable (fname,lname,usernameoremail,upassword,city,ustate,shopname,phone,urole) value('$ufname','$ulname','$uname','$hashpassw','$ucity','$ustate','$usname','$uphone','$role')";
+      
+      if($link->query($commad)){
+        echo'<script>alert("your seccesfully Registered now you Login")</script>';
+      }
+      else{
+        if($link->errno == 1062){
+          echo'<script>alert("please check the user name this is already exist and try Again")</script>';
+          
+        }
+        else{
+          echo'<script>alert("try Again")</script>';
+        }
+        
+        
+      }
+      
+    }
+    else{
+      echo'<script>alert("password is not match please check once")</script>';
+    }
+
+  }
+
+?>
