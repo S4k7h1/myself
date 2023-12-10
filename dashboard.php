@@ -61,7 +61,7 @@ header('location:login.php');
             <div class="col-md-3 ">
                 <div class="h-75 w-100 my-2">
                   <div class=" nav_section">
-                      <div class=" pt-4">
+                      <div class=" pt-0 pt-md-4 pt-lg-4 " id="menu">
                         <div class="d-flex justify-content-around m-3 " id="click1" >
                           <span class="material-symbols-outlined">
                             account_circle

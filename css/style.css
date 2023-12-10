@@ -762,7 +762,7 @@ margin: 5px 0px 5px 0px ;
   box-shadow: #6bd1bd 10px  10px 20px;
 }
 
-.nav_section .pt-4 .d-flex{
+.nav_section #menu .d-flex{
 background-color: #0ca57a;
 padding: 10px;
 border-radius: 10px;
@@ -771,7 +771,7 @@ font-size: 1rem;
 cursor: pointer;
 }
 
-.nav_section .pt-4 .d-flex:hover{
+.nav_section #menu  .d-flex:hover{
   
   background-color: #097a5a;
   color:black;
